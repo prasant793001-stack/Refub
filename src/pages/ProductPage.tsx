@@ -1,0 +1,249 @@
+import { useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
+
+const ProductPage = () => {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const [quantity, setQuantity] = useState(1);
+
+  const products = {
+    '1': {
+      name: 'iPhone 14 Pro',
+      price: 1899,
+      image: '/assets/stock/assets-stock-smartphone-jpg.jpg',
+      images: [
+        '/assets/stock/assets-stock-smartphone-jpg.jpg',
+        '/assets/stock/assets-stock-drone-jpg.jpg',
+        '/assets/stock/assets-stock-laptop-jpg.jpg',
+              '/assets/stock/assets-stock-console-jpg.jpg'
+      ],
+      description: 'Experience the pinnacle of iPhone innovation with the iPhone 14 Pro. Featuring a stunning 6.1-inch Super Retina XDR display with ProMotion technology, this expert-refurbished device delivers exceptional performance and camera quality.',
+      specs: {
+        'Display': '6.1-inch Super Retina XDR',
+        'Processor': 'A16 Bionic Chip',
+        'Camera': '48MP Main + 12MP Ultra Wide + 12MP Telephoto',
+        'Storage': '128GB / 256GB / 512GB / 1TB',
+        'Battery': 'Up to 29 hours video playback',
+        'Connectivity': '5G, Wi-Fi 6, Bluetooth 5.3',
+        'Condition': 'Excellent (Minor cosmetic wear)',
+        'Warranty': '3 Months'
+      },
+      features: [
+        'Expert tested and certified',
+        '95%+ battery health',
+        'All original accessories included',
+        '3-month comprehensive warranty',
+        'Free shipping across UAE',
+        '30-day return policy'
+      ]
+    },
+    '2': {
+      name: 'DJI Mini 4 Pro',
+      price: 1299,
+      image: 'https://images.unsplash.com/photo-1507582020474-93a3a6822c21?w=600&h=600&fit=crop',
+      images: [
+        'https://images.unsplash.com/photo-1507582020474-93a3a6822c21?w=600&h=600&fit=crop',
+        'https://images.unsplash.com/photo-1473968512343-60dbd039873f?w=600&h=600&fit=crop',
+        'https://images.unsplash.com/photo-1507582020474-93a3a6822c21?w=600&h=600&fit=crop',
+        'https://images.unsplash.com/photo-1473968512343-60dbd039873f?w=600&h=600&fit=crop'
+      ],
+      description: 'Capture stunning aerial footage with the DJI Mini 4 Pro. This lightweight yet powerful drone features 4K HDR video, 3-axis mechanical stabilization, and intelligent flight modes for professional results.',
+      specs: {
+        'Weight': 'Under 249g (No registration required)',
+        'Camera': '48MP 1/1.3-inch CMOS Sensor',
+        'Video': '4K HDR at 100/50/25/24 fps',
+        'Flight Time': 'Up to 34 minutes',
+        'Max Range': '12 km (FCC)',
+        'Obstacle Avoidance': 'Omni-directional',
+        'Condition': 'Like New',
+        'Warranty': '3 Months'
+      },
+      features: [
+        'Expert tested and certified',
+        'Original DJI accessories included',
+        '3-month comprehensive warranty',
+        'Free shipping across UAE',
+        '30-day return policy',
+        'Easy return & exchange'
+      ]
+    }
+  };
+
+  const product = products[id as keyof typeof products] || products['1'];
+
+  return (
+    <div className="relative z-10 min-h-screen py-20">
+      {/* Breadcrumb */}
+      <div className="max-w-7xl mx-auto px-6 mb-8">
+        <nav className="text-sm text-gray-500">
+          <a href="/" className="hover:text-brand transition-colors">Home</a>
+          <span className="mx-2">/</span>
+          <a href="/products" className="hover:text-brand transition-colors">Products</a>
+          <span className="mx-2">/</span>
+          <span className="text-gray-300">{product.name}</span>
+        </nav>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid lg:grid-cols-2 gap-12">
+          {/* Product Images */}
+          <div>
+            <div className="aspect-square rounded-2xl overflow-hidden mb-4 glass-card">
+              <img
+                src={product.images[0]}
+                alt={product.name}
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="grid grid-cols-4 gap-4">
+              {product.images.map((img, i) => (
+                <button
+                  key={i}
+                  onClick={() => {
+                    const images = products[id as keyof typeof products]?.images || [];
+                    navigate(`/product/${id}`, { state: { img: images[i] } } as any);
+                  }}
+                  className={`aspect-square rounded-xl overflow-hidden border-2 transition-all ${
+                    i === 0 ? 'border-brand' : 'border-transparent hover:border-white/30'
+                  }`}
+                >
+                  <img src={img} alt={`View ${i}`} className="w-full h-full object-cover" />
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Product Info */}
+          <div>
+            <div className="mb-6">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="flex text-yellow-400">
+                  {Array.from({ length: 5 }).map((_, j) => (
+                    <svg key={j} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.26.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.55-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+                <span className="text-gray-400 text-sm">5 reviews</span>
+              </div>
+
+              <h1 className="text-4xl md:text-5xl font-display font-bold mb-4">{product.name}</h1>
+
+              <div className="flex items-center gap-4 mb-6">
+                <span className="text-4xl font-display font-bold gradient-text">AED {product.price}</span>
+                <span className="text-xl text-gray-500 line-through">AED {Math.round(product.price * 1.4)}</span>
+                <span className="px-4 py-2 rounded-full bg-green-500/20 text-green-400 text-sm font-bold">
+                  Save 32%
+                </span>
+              </div>
+
+              <p className="text-gray-400 text-lg mb-8 leading-relaxed">
+                {product.description}
+              </p>
+
+              {/* Features */}
+              <div className="mb-8">
+                <h3 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-4">Key Features</h3>
+                <ul className="space-y-2">
+                  {product.features.map((feature, i) => (
+                    <li key={i} className="flex items-center gap-3 text-gray-300">
+                      <svg className="w-5 h-5 text-brand flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Specs */}
+              <div className="mb-8">
+                <h3 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-4">Specifications</h3>
+                <div className="grid grid-cols-2 gap-4">
+                  {Object.entries(product.specs).map(([key, value]) => (
+                    <div key={key} className="glass-card p-4">
+                      <div className="text-xs text-gray-500 uppercase mb-1">{key}</div>
+                      <div className="text-gray-300 font-medium">{value}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Warranty Badge */}
+              <div className="mb-8 p-4 rounded-xl bg-brand/10 border border-brand/20">
+                <div className="flex items-center gap-3">
+                  <svg className="w-8 h-8 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
+                  <div>
+                    <div className="font-bold text-brand">3-Month Warranty</div>
+                    <div className="text-sm text-gray-400">Full coverage on all components</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Action Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 mb-8">
+              <div className="flex items-center gap-3 bg-white/5 rounded-xl p-3 border border-white/10">
+                <button
+                  onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                  className="w-10 h-10 rounded-lg bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 12H4" />
+                  </svg>
+                </button>
+                <span className="text-xl font-bold w-12 text-center">{quantity}</span>
+                <button
+                  onClick={() => setQuantity(quantity + 1)}
+                  className="w-10 h-10 rounded-lg bg-brand hover:bg-brand-dark text-white flex items-center justify-center transition-colors"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                  </svg>
+                </button>
+              </div>
+
+              <button className="flex-1 py-4 rounded-xl bg-gradient-to-r from-brand to-brand-dark text-white font-bold text-lg hover:from-brand-dark hover:to-accent transition-all shadow-lg shadow-brand/20">
+                Add to Cart - AED {product.price * quantity}
+              </button>
+
+              <button className="px-6 py-4 rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-colors">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Trust Badges */}
+            <div className="flex flex-wrap gap-4 text-sm text-gray-500">
+              <span className="flex items-center gap-2">
+                <svg className="w-5 h-5 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                Verified Authentic
+              </span>
+              <span className="flex items-center gap-2">
+                <svg className="w-5 h-5 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+                </svg>
+                Secure Payment
+              </span>
+              <span className="flex items-center gap-2">
+                <svg className="w-5 h-5 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                UAE Based
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ProductPage;

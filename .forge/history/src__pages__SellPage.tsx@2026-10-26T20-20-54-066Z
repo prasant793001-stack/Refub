@@ -1,0 +1,209 @@
+import { useState } from 'react';
+import { motion } from 'framer-motion';
+
+const SellPage = () => {
+  const [step, setStep] = useState(1);
+  const [formData, setFormData] = useState({
+    deviceType: '',
+    brand: '',
+    model: '',
+    condition: '',
+    price: '',
+    location: '',
+    description: ''
+  });
+
+  const deviceTypes = ['Mobile Phone', 'Laptop', 'Tablet', 'Drone', 'Camera', 'Console', 'Smart TV', 'Other'];
+  const brands: Record<string, string[]> = {
+    'Mobile Phone': ['Apple', 'Samsung', 'Google', 'OnePlus', 'Xiaomi', 'Oppo', 'Vivo'],
+    'Laptop': ['Apple', 'Dell', 'HP', 'Lenovo', 'Asus', 'Acer'],
+    'Tablet': ['Apple', 'Samsung', 'Lenovo', 'Huawei'],
+    'Drone': ['DJI', 'Autel', 'Freefly'],
+    'Camera': ['Canon', 'Nikon', 'Sony', 'Fujifilm'],
+    'Console': ['PlayStation', 'Xbox', 'Nintendo'],
+    'Smart TV': ['Samsung', 'LG', 'Sony', 'TCL']
+  };
+
+  return (
+    <div className="relative z-10 min-h-screen py-20">
+      {/* Hero */}
+      <div className="text-center mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <h1 className="text-5xl md:text-7xl font-display font-bold mb-4">
+            Sell Your <span className="gradient-text">Device</span>
+          </h1>
+          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+            We'll pick up your device from anywhere in UAE. Get paid instantly and help the environment by giving it a second life.
+          </p>
+        </motion.div>
+      </div>
+
+      <div className="max-w-4xl mx-auto px-6">
+        {/* Progress Steps */}
+        <div className="flex justify-center mb-12">
+          {[
+            { number: '1', label: 'Device Details' },
+            { number: '2', label: 'Get Offer' },
+            { number: '3', label: 'We Pick Up' },
+            { number: '4', label: 'Get Paid' }
+          ].map((s, i) => (
+            <div key={i} className="flex items-center">
+              <div className={`w-12 h-12 rounded-full flex items-center justify-center font-bold ${
+                step > i + 1 ? 'bg-brand text-white' :
+                step === i + 1 ? 'bg-brand-dark text-white' :
+                'bg-white/5 text-gray-500'
+              }`}>
+                {step > i + 1 ? '✓' : s.number}
+              </div>
+              <span className={`ml-4 font-medium ${
+                step >= i + 1 ? 'text-white' : 'text-gray-600'
+              }`}>{s.label}</span>
+              {i < 3 && (
+                <div className={`flex-1 h-1 mx-4 rounded-full ${
+                  step > i + 1 ? 'bg-brand' : 'bg-white/10'
+                }`} />
+              )}
+            </div>
+          ))}
+        </div>
+
+        {/* Form */}
+        {/* Full-screen canvas form */}
+        <div className="min-h-screen flex items-center justify-center p-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="w-full max-w-6xl mx-auto"
+          >
+          {step === 1 && (
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              className="space-y-6"
+            >
+              <div>
+                <label className="block text-sm font-medium text-gray-400 mb-2">Device Type</label>
+                <select
+                  value={formData.deviceType}
+                  onChange={(e) => setFormData({ ...formData, deviceType: e.target.value })}
+                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand transition-colors"
+                >
+                  <option value="">Select device type</option>
+                  {deviceTypes.map((type) => (
+                    <option key={type} value={type}>{type}</option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-400 mb-2">Brand</label>
+                <select
+                  value={formData.brand}
+                  onChange={(e) => setFormData({ ...formData, brand: e.target.value })}
+                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand transition-colors"
+                  disabled={!formData.deviceType}
+                >
+                  <option value="">Select brand</option>
+                  {formData.deviceType && brands[formData.deviceType]?.map((brand) => (
+                    <option key={brand} value={brand}>{brand}</option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-400 mb-2">Model</label>
+                <input
+                  type="text"
+                  value={formData.model}
+                  onChange={(e) => setFormData({ ...formData, model: e.target.value })}
+                  placeholder="e.g., iPhone 14 Pro"
+                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-brand transition-colors"
+                  disabled={!formData.brand}
+                />
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-medium text-gray-400 mb-2">Condition</label>
+                  <select
+                    value={formData.condition}
+                    onChange={(e) => setFormData({ ...formData, condition: e.target.value })}
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand transition-colors"
+                  >
+                    <option value="">Select condition</option>
+                    <option value="excellent">Excellent (Like new)</option>
+                    <option value="good">Good (Minor wear)</option>
+                    <option value="fair">Fair (Some scratches)</option>
+                    <option value="poor">Poor (Functional issues)</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-400 mb-2">Your Expected Price (AED)</label>
+                  <input
+                    type="number"
+                    value={formData.price}
+                    onChange={(e) => setFormData({ ...formData, price: e.target.value })}
+                    placeholder="e.g., 2000"
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-brand transition-colors"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-400 mb-2">Location (City/Area)</label>
+                <input
+                  type="text"
+                  value={formData.location}
+                  onChange={(e) => setFormData({ ...formData, location: e.target.value })}
+                  placeholder="e.g., Dubai Marina"
+                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-brand transition-colors"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-400 mb-2">Additional Details</label>
+                <textarea
+                  value={formData.description}
+                  onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                  placeholder="Describe any issues, accessories included, etc."
+                  rows={4}
+                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-brand transition-colors resize-none"
+                />
+              </div>
+
+              <div className="flex gap-4 pt-4">
+                <button
+                  onClick={() => setStep(2)}
+                  disabled={!formData.deviceType}
+                  className="flex-1 py-4 rounded-xl bg-brand hover:bg-brand-dark text-white font-bold disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                >
+                  Get My Offer
+                </button>
+                <button
+                  onClick={() => setStep(0)}
+                  className="px-6 py-4 rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-colors"
+                >
+                  ← Back
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </div>
+  );
+}
+
+        </motion.div>
+      </div>
+    </div>
+  );
+}
+
+export default SellPage;

@@ -1,0 +1,8 @@
+- assets/stock/assets-stock-smartphone-jpg.jpg: Image by JESHOOTS-com on Pixabay - https://pixabay.com/photos/iphone-hand-screen-smartphone-apps-410311/
+- assets/stock/assets-stock-laptop-jpg.jpg: Image by 377053 on Pixabay - https://pixabay.com/photos/macbook-laptop-google-display-459196/
+- assets/stock/assets-stock-drone-jpg.jpg: Image by Pexels on Pixabay - https://pixabay.com/photos/drone-flying-camera-remote-control-1866742/
+- assets/stock/assets-stock-projector-jpg.jpg: Image by Antonio_Cansino on Pixabay - https://pixabay.com/photos/cinema-projector-home-video-movie-5069314/
+- assets/stock/assets-stock-console-jpg.jpg: Image by Setupx3D on Pixabay - https://pixabay.com/photos/interior-design-home-office-8922413/
+- assets/stock/assets-stock-camera-jpg.jpg: Image by alandsmann on Pixabay - https://pixabay.com/photos/nikon-photography-camera-studio-8388022/
+- assets/stock/assets-stock-fridge-jpg.jpg: Image by shadowfirearts on Pixabay - https://pixabay.com/photos/kitchen-interior-design-room-home-1940174/
+- assets/stock/assets-stock-watch-jpg.jpg: Image by fancycrave1 on Pixabay - https://pixabay.com/photos/smart-watch-apple-wrist-wristwatch-821557/

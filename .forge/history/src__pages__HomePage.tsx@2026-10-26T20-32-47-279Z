@@ -1,0 +1,417 @@
+import { motion } from 'framer-motion';
+
+const HomePage = () => {
+  const products = [
+    {
+      id: 1,
+      name: 'iPhone 14 Pro',
+      category: 'Mobile Phones',
+      price: 1899,
+      image: '/assets/stock/assets-stock-smartphone-jpg.jpg',
+      rating: 4.9,
+      reviews: 234,
+      badge: 'Best Seller'
+    },
+    {
+      id: 2,
+      name: 'DJI Mini 4 Pro',
+      category: 'Drones',
+      price: 1299,
+      image: '/assets/stock/assets-stock-drone-jpg.jpg',
+      rating: 4.8,
+      reviews: 156,
+      badge: 'New Arrival'
+    },
+    {
+      id: 3,
+      name: 'MacBook Pro M3',
+      category: 'Laptops',
+      price: 2499,
+      image: 'https://images.unsplash.com/photo-1517336714731-489689fd1254?w=400&h=400&fit=crop',
+      rating: 4.9,
+      reviews: 189,
+      badge: 'Premium'
+    },
+    {
+      id: 4,
+      name: 'Sony PlayStation 5',
+      category: 'Gaming',
+      price: 1199,
+      image: 'https://images.unsplash.com/photo-1606144042614-b281d3b49841?w=400&h=400&fit=crop',
+      rating: 4.7,
+      reviews: 312,
+      badge: 'Hot Deal'
+    },
+    {
+      id: 5,
+      name: 'Samsung Galaxy S24',
+      category: 'Mobile Phones',
+      price: 1699,
+      image: 'https://images.unsplash.com/photo-1610945415295-d9bbf087aef1?w=400&h=400&fit=crop',
+      rating: 4.8,
+      reviews: 278,
+      badge: 'Best Value'
+    },
+    {
+      id: 6,
+      name: 'Canon EOS R6',
+      category: 'Cameras',
+      price: 2199,
+      image: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc3f?w=400&h=400&fit=crop',
+      rating: 4.9,
+      reviews: 145,
+      badge: 'Professional'
+    },
+    {
+      id: 7,
+      name: 'LG OLED TV 55"',
+      category: 'TVs',
+      price: 1599,
+      image: 'https://images.unsplash.com/photo-1593359678276-3c9558922f76?w=400&h=400&fit=crop',
+      rating: 4.6,
+      reviews: 98,
+      badge: 'Smart Choice'
+    },
+    {
+      id: 8,
+      name: 'Dyson V15 Detect',
+      category: 'Home Appliances',
+      price: 899,
+      image: 'https://images.unsplash.com/photo-1557304536-9935a1984835?w=400&h=400&fit=crop',
+      rating: 4.7,
+      reviews: 201,
+      badge: 'Eco-Friendly'
+    }
+  ];
+
+  const categories = [
+    { name: 'Mobile Phones', icon: '📱', count: 156 },
+    { name: 'Drones', icon: '🚁', count: 48 },
+    { name: 'Laptops & PCs', icon: '💻', count: 89 },
+    { name: 'Projectors', icon: '📽️', count: 34 },
+    { name: 'Gaming', icon: '🎮', count: 72 },
+    { name: 'Cameras', icon: '📷', count: 56 },
+    { name: 'TVs & Audio', icon: '📺', count: 43 },
+    { name: 'Smart Home', icon: '🏠', count: 67 }
+  ];
+
+  return (
+    <div className="relative z-10">
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Background with gradient */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0f] via-[#121218] to-[#0a0a0f]" />
+        
+        {/* Animated gradient orbs */}
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-brand/20 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/20 rounded-full blur-3xl animate-pulse delay-1000" />
+
+        {/* Hero Content */}
+        <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <div className="inline-block mb-6">
+              <span className="px-6 py-3 rounded-full bg-white/5 border border-white/10 text-brand text-sm font-medium tracking-wider uppercase">
+                UAE's Premium Refurbished Store
+              </span>
+            </div>
+          </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-6xl md:text-8xl lg:text-9xl font-display font-bold mb-6 leading-tight"
+          >
+            <span className="block">Premium</span>
+            <span className="block bg-gradient-to-r from-brand via-white to-accent bg-clip-text text-transparent">
+              Refurbished Gadgets
+            </span>
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="text-xl md:text-2xl text-gray-400 mb-8 max-w-3xl mx-auto"
+          >
+            Expert tested, certified refurbished devices with <span className="text-brand">3-month warranty</span>. 
+            Save up to <span className="text-accent">40%</span> without compromising quality.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="flex flex-col md:flex-row gap-4 justify-center mb-12"
+          >
+            <a
+              href="/products"
+              className="group relative px-8 py-4 rounded-full bg-gradient-to-r from-brand to-brand-dark text-white font-bold text-lg overflow-hidden"
+            >
+              <span className="relative z-10">Shop Now</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-accent to-brand opacity-0 group-hover:opacity-100 transition-opacity" />
+            </a>
+            <a
+              href="/sell"
+              className="group relative px-8 py-4 rounded-full bg-white/5 border border-white/10 text-white font-bold text-lg hover:bg-white/10 transition-colors"
+            >
+              <span className="relative z-10">Sell Your Device</span>
+              <span className="absolute inset-0 rounded-full group-hover:scale-110 transition-transform" />
+            </a>
+          </motion.div>
+
+          {/* Stats */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1 }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto"
+          >
+            {[
+              { value: '1500+', label: 'Products Sold' },
+              { value: '4.9★', label: 'Customer Rating' },
+              { value: '3mo', label: 'Warranty' },
+              { value: '24/7', label: 'Expert Support' }
+            ].map((stat, i) => (
+              <div key={i} className="text-center">
+                <div className="text-3xl md:text-4xl font-display font-bold gradient-text mb-2">
+                  {stat.value}
+                </div>
+                <div className="text-sm text-gray-500 uppercase tracking-wider">{stat.label}</div>
+              </div>
+            ))}
+          </motion.div>
+        </div>
+
+        {/* Scroll indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5 }}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        >
+          <div className="w-6 h-10 border-2 border-white/20 rounded-full flex justify-center">
+            <div className="w-1 h-3 bg-brand rounded-full mt-2 animate-bounce" />
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Categories Section */}
+      <section className="py-20 relative">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-4xl md:text-5xl font-display font-bold mb-4"
+            >
+              Explore Our <span className="gradient-text">Categories</span>
+            </motion.h2>
+            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+              From premium smartphones to cutting-edge drones, we have expert-tested devices for every need.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {categories.map((category, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                whileHover={{ scale: 1.05 }}
+                className="glass-card cursor-pointer group"
+              >
+                <div className="text-4xl mb-4 group-hover:scale-110 transition-transform">{category.icon}</div>
+                <h3 className="text-xl font-heading font-bold mb-2 group-hover:text-brand transition-colors">
+                  {category.name}
+                </h3>
+                <p className="text-sm text-gray-500">{category.count} items</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Products */}
+      <section className="py-20 relative">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex items-center justify-between mb-12">
+            <div>
+              <h2 className="text-4xl md:text-5xl font-display font-bold mb-2">
+                Featured <span className="gradient-text">Products</span>
+              </h2>
+              <p className="text-gray-400 text-lg">Handpicked by our experts</p>
+            </div>
+            <a href="/products" className="hidden md:flex items-center gap-2 text-brand hover:text-brand-light transition-colors">
+              View All Products
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {products.map((product, i) => (
+              <motion.div
+                key={product.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                whileHover={{ y: -8 }}
+                className="glass-card overflow-hidden group"
+              >
+                <div className="relative aspect-square mb-4 overflow-hidden rounded-xl">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  {product.badge && (
+                    <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-brand text-white text-xs font-bold">
+                      {product.badge}
+                    </div>
+                  )}
+                  <button className="absolute bottom-3 right-3 w-10 h-10 rounded-full bg-white/90 flex items-center justify-center hover:bg-brand hover:text-white transition-colors">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                    </svg>
+                  </button>
+                </div>
+                <h3 className="text-xl font-heading font-bold mb-2 group-hover:text-brand transition-colors">
+                  {product.name}
+                </h3>
+                <div className="flex items-center gap-1 mb-3">
+                  <div className="flex text-yellow-400">
+                    {Array.from({ length: 5 }).map((_, j) => (
+                      <svg key={j} className="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.26.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.55-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                    ))}
+                  </div>
+                  <span className="text-sm text-gray-500">{product.reviews} reviews</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-2xl font-display font-bold gradient-text">
+                    AED {product.price}
+                  </span>
+                  <button className="px-4 py-2 rounded-lg bg-brand hover:bg-brand-dark text-white text-sm font-bold transition-colors">
+                    Add to Cart
+                  </button>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="mt-12 text-center md:hidden">
+            <a href="/products" className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/5 border border-white/10 text-brand hover:bg-white/10 transition-colors">
+              View All Products
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us */}
+      <section className="py-20 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-brand/5" />
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">
+                Why Choose <span className="gradient-text">REFUB</span>?
+              </h2>
+              <p className="text-gray-400 text-lg mb-8">
+                We're not just selling refurbished gadgets. We're providing peace of mind with expert testing, 
+                comprehensive warranties, and exceptional customer support.
+              </p>
+
+              <div className="space-y-6">
+                {[
+                  { icon: '🔍', title: 'Expert Tested', desc: 'Every device undergoes 50+ point inspection' },
+                  { icon: '🛡️', title: '3-Month Warranty', desc: 'Full coverage warranty on all products' },
+                  { icon: '🚚', title: 'Free Delivery', desc: 'Complimentary shipping across UAE' },
+                  { icon: '💬', title: '24/7 Support', desc: 'Dedicated support team ready to help' }
+                ].map((item, i) => (
+                  <div key={i} className="flex gap-4">
+                    <div className="text-3xl">{item.icon}</div>
+                    <div>
+                      <h3 className="text-xl font-heading font-bold mb-1">{item.title}</h3>
+                      <p className="text-gray-500">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              <div className="glass-card p-6 text-center">
+                <div className="text-5xl mb-3">🎯</div>
+                <h3 className="text-xl font-bold mb-2">Precision</h3>
+                <p className="text-sm text-gray-500">Every detail matters</p>
+              </div>
+              <div className="glass-card p-6 text-center">
+                <div className="text-5xl mb-3">⚡</div>
+                <h3 className="text-xl font-bold mb-2">Speed</h3>
+                <p className="text-sm text-gray-500">Fast delivery & setup</p>
+              </div>
+              <div className="glass-card p-6 text-center">
+                <div className="text-5xl mb-3">💎</div>
+                <h3 className="text-xl font-bold mb-2">Quality</h3>
+                <p className="text-sm text-gray-500">Premium refurbished</p>
+              </div>
+              <div className="glass-card p-6 text-center">
+                <div className="text-5xl mb-3">🌟</div>
+                <h3 className="text-xl font-bold mb-2">Trust</h3>
+                <p className="text-sm text-gray-500">5000+ happy customers</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 relative">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="glass-card text-center p-12 md:p-16 relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-r from-brand/10 to-accent/10 opacity-50" />
+            <div className="relative z-10">
+              <h2 className="text-3xl md:text-5xl font-display font-bold mb-4">
+                Ready to Upgrade Your Tech?
+              </h2>
+              <p className="text-gray-400 text-lg mb-8 max-w-2xl mx-auto">
+                Join thousands of satisfied customers who saved money without compromising on quality.
+              </p>
+              <div className="flex flex-col md:flex-row gap-4 justify-center">
+                <a
+                  href="/products"
+                  className="px-8 py-4 rounded-full bg-brand hover:bg-brand-dark text-white font-bold text-lg transition-colors"
+                >
+                  Shop Now
+                </a>
+                <a
+                  href="/about"
+                  className="px-8 py-4 rounded-full bg-white/5 border border-white/10 text-white font-bold text-lg hover:bg-white/10 transition-colors"
+                >
+                  Learn More
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default HomePage;
