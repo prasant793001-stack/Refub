@@ -17,7 +17,7 @@ import ContactPage from './pages/ContactPage';
 import CartPage from './pages/CartPage';
 import Login from './components/Login';
 
-function App() {
+function App({ basename }: { basename: string }) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -112,7 +112,7 @@ function App() {
   }
 
   return (
-    <Router>
+    <Router basename={basename}>
       <div className="relative min-h-screen bg-gradient-to-b from-[#0a0a0f] to-[#121218] text-white">
         {/* Particle Background */}
         <div className="particle-bg pointer-events-none">
