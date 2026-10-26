@@ -7,7 +7,7 @@ const HomePage = () => {
       name: 'iPhone 14 Pro',
       category: 'Mobile Phones',
       price: 1899,
-      image: '/assets/stock/assets-stock-smartphone-jpg.jpg',
+      image: `${import.meta.env.BASE_URL}assets/stock/assets-stock-smartphone-jpg.jpg`,
       rating: 4.9,
       reviews: 234,
       badge: 'Best Seller'
@@ -17,7 +17,7 @@ const HomePage = () => {
       name: 'DJI Mini 4 Pro',
       category: 'Drones',
       price: 1299,
-      image: '/assets/stock/assets-stock-drone-jpg.jpg',
+      image: `${import.meta.env.BASE_URL}assets/stock/assets-stock-drone-jpg.jpg`,
       rating: 4.8,
       reviews: 156,
       badge: 'New Arrival'
@@ -27,7 +27,7 @@ const HomePage = () => {
       name: 'MacBook Pro M3',
       category: 'Laptops',
       price: 2499,
-      image: '/assets/stock/assets-stock-laptop-jpg.jpg',
+      image: `${import.meta.env.BASE_URL}assets/stock/assets-stock-laptop-jpg.jpg`,
       rating: 4.9,
       reviews: 189,
       badge: 'Premium'
@@ -37,7 +37,7 @@ const HomePage = () => {
       name: 'Sony PlayStation 5',
       category: 'Gaming',
       price: 1199,
-      image: '/assets/stock/assets-stock-console-jpg.jpg',
+      image: `${import.meta.env.BASE_URL}assets/stock/assets-stock-console-jpg.jpg`,
       rating: 4.7,
       reviews: 312,
       badge: 'Hot Deal'
@@ -47,7 +47,7 @@ const HomePage = () => {
       name: 'Samsung Galaxy S24',
       category: 'Mobile Phones',
       price: 1699,
-      image: '/assets/stock/assets-stock-smartphone-jpg.jpg',
+      image: `${import.meta.env.BASE_URL}assets/stock/assets-stock-smartphone-jpg.jpg`,
       rating: 4.8,
       reviews: 278,
       badge: 'Best Value'
@@ -57,7 +57,7 @@ const HomePage = () => {
       name: 'Canon EOS R6',
       category: 'Cameras',
       price: 2199,
-      image: '/assets/stock/assets-stock-drone-jpg.jpg',
+      image: `${import.meta.env.BASE_URL}assets/stock/assets-stock-drone-jpg.jpg`,
       rating: 4.9,
       reviews: 145,
       badge: 'Professional'
@@ -67,7 +67,7 @@ const HomePage = () => {
       name: 'LG OLED TV 55"',
       category: 'TVs',
       price: 1599,
-      image: '/assets/stock/assets-stock-fridge-jpg.jpg',
+      image: `${import.meta.env.BASE_URL}assets/stock/assets-stock-fridge-jpg.jpg`,
       rating: 4.6,
       reviews: 98,
       badge: 'Smart Choice'
@@ -77,7 +77,7 @@ const HomePage = () => {
       name: 'Dyson V15 Detect',
       category: 'Home Appliances',
       price: 899,
-      image: '/assets/stock/assets-stock-camera-jpg.jpg',
+      image: `${import.meta.env.BASE_URL}assets/stock/assets-stock-camera-jpg.jpg`,
       rating: 4.7,
       reviews: 201,
       badge: 'Eco-Friendly'
