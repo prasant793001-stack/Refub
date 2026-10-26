@@ -102,9 +102,9 @@ const HomePage = () => {
         {/* Background with gradient */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0f] via-[#121218] to-[#0a0a0f]" />
         
-        {/* Animated gradient orbs - centered to prevent horizontal overflow */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-brand/20 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-accent/20 rounded-full blur-3xl animate-pulse delay-1000" />
+        {/* Animated gradient orbs - centered and constrained to prevent horizontal overflow */}
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-64 h-64 bg-brand/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-1/4 left-1/2 -translate-x-1/2 w-64 h-64 bg-accent/10 rounded-full blur-3xl animate-pulse delay-1000" />
 
         {/* Hero Content */}
         <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
