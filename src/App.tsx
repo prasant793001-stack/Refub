@@ -162,7 +162,7 @@ function App({ basename }: { basename: string }) {
         </nav>
 
         {/* Main Content */}
-        <main className="pt-20 relative z-10">
+        <main className="pt-20 relative z-10 max-w-7xl mx-auto w-full overflow-x-hidden">
           <AnimatePresence mode="wait">
             <Routes>
               <Route path="/" element={<HomePage />} />
