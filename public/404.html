@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>Redirecting...</title>
-  <meta http-equiv="refresh" content="0;url=/">
+  <meta charset="utf-8">
+  <title>Refub</title>
+  <script type="text/javascript">
+    // Get the requested path from the URL
+    const path = window.location.pathname;
+
+    // If the path is not the root, encode it into a query parameter and redirect to the root
+    if (path !== '/') {
+      window.location.href = `/?path=${encodeURIComponent(path)}`;
+    }
+  </script>
 </head>
 <body>
-  <p>Redirecting to the homepage...</p>
 </body>
 </html>

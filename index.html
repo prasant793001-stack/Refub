@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/Refub/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="REFUB - The Best Refurbished Gadgets in UAE. Expert tested mobile phones, drones, PCs, projectors and more. 3-month warranty included." />
     <meta name="keywords" content="refurbished, gadgets, UAE, Dubai, iPhone, Android, drones, PCs, projectors, electronics" />
@@ -11,6 +11,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <title>REFUB - Premium Refurbished Gadgets UAE</title>
+    <script type="text/javascript">
+  (function() {
+    var q = window.location.search;
+    if (q && q.indexOf('?path=') === 0) {
+      var p = q.slice(6).split('&')[0];
+      window.history.replaceState(null, null, '/Refub' + decodeURIComponent(p));
+    }
+  })();
+</script>
   </head>
   <body>
     <div id="root"></div>
